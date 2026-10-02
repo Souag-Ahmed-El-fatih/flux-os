@@ -1,0 +1,32 @@
+
+
+ARCH = x86
+
+include ./config/makefile/flags.mk
+include ./config/makefile/paths.mk
+
+all: drivers_compile kernel_compile kernel_linker 
+
+kernel_compile: 
+	$(ASM) $(ASM_FLAGS) $(BOOT_DIR)boot.asm -o $(TMP_DIR)obj/boot.o
+	$(ASM) $(ASM_FLAGS) $(BOOT_DIR)multiboot.asm -o $(TMP_DIR)obj/multiboot.o
+	$(ASM) $(ASM_FLAGS) $(BOOT_DIR)stack.asm -o $(TMP_DIR)obj/stack.o
+	$(CC) $(CC_FLAGS) $(KENREL_DIR)kernel.c -o $(TMP_DIR)obj/kernel.o
+
+
+kernel_linker:
+	$(LD) $(LD_FLAGS) $(TMP_DIR)obj/*.o -o $(KENREL_ELF)
+
+drivers_compile:
+	$(CC) $(CC_FLAGS) $(DRIVERS_DIR)gfx/early_gfx.c -o $(TMP_DIR)obj/early_gfx.o
+	
+cdrom:
+	grub-mkrescue rootFS -o flux.iso
+
+
+setup:
+	rm -rf $(TMP_DIR)
+	mkdir $(TMP_DIR)
+	mkdir $(TMP_DIR)/elf
+	mkdir $(TMP_DIR)/bin
+	mkdir $(TMP_DIR)/obj
