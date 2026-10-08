@@ -1,3 +1,18 @@
+
+/*
+ * ===== Flux operating system ====
+ * (2026-2027)
+ * GNU GPL (v3.0)
+ * ================================ 
+ * creat by : Souag Ahmed El fatih
+ * https://github.com/SouagAhmedElfatih/flux_os
+ * 
+ * File : C header
+ * font core File
+ *
+ * 
+*/
+
 #ifndef FONT_H
 #define FONT_H
 char font_8x16[256][16] = {

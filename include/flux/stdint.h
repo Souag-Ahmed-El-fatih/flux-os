@@ -1,3 +1,18 @@
+
+/*
+ * ===== Flux operating system ====
+ * (2026-2027)
+ * GNU GPL (v3.0)
+ * ================================ 
+ * creat by : Souag Ahmed El fatih
+ * https://github.com/SouagAhmedElfatih/flux_os
+ * 
+ * File : C header
+ * stdint File
+ *
+ * 
+*/
+
 #ifndef STDINT_H
 #define STDINT_H
 

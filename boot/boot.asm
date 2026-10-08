@@ -6,7 +6,6 @@
 ; creat by : souag ahmed el fatih
 ; --------------------------------
 ; GPL 3.0
-; 
 extern stack
 
 

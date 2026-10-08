@@ -1,7 +1,22 @@
 
+
+/*
+ * ===== Flux operating system ====
+ * (2026-2027)
+ * GNU GPL (v3.0)
+ * ================================ 
+ * creat by : Souag Ahmed El fatih
+ * https://github.com/SouagAhmedElfatih/flux_os
+ * 
+ * File : C source
+ * Kernel core File
+ *
+ * 
+*/
 #include <flux/info.h>
 #include <drivers/gfx/early.h>
 #include <multiboot.h>
+#include <arch/x86/gdt.h>
 
 kernel_info_t kernel_info;
 
@@ -53,5 +68,15 @@ void kernel_main(uint32_t ebx) {
         early_gfx_print("flux os \n");
         early_gfx_color(0xFFC0C0C0);
     }
+
+    GDT_LOAD();
+
+    if (kernel_info.gfx.mode == GFX_GFX_MODE) {
+        early_gfx_print("[ ok ] global descriptor table init \n");
+    }
+    else {
+        //
+    }
+
     
 }

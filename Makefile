@@ -11,6 +11,8 @@ kernel_compile:
 	$(ASM) $(ASM_FLAGS) $(BOOT_DIR)boot.asm -o $(TMP_DIR)obj/boot.o
 	$(ASM) $(ASM_FLAGS) $(BOOT_DIR)multiboot.asm -o $(TMP_DIR)obj/multiboot.o
 	$(ASM) $(ASM_FLAGS) $(BOOT_DIR)stack.asm -o $(TMP_DIR)obj/stack.o
+	$(ASM) $(ASM_FLAGS) $(ARCH_DIR)io_port.asm -o $(TMP_DIR)obj/io_port.o
+	$(ASM) $(ASM_FLAGS) $(ARCH_DIR)gdt.asm -o $(TMP_DIR)obj/gdt.o
 	$(CC) $(CC_FLAGS) $(KENREL_DIR)kernel.c -o $(TMP_DIR)obj/kernel.o
 
 

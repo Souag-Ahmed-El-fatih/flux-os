@@ -1,4 +1,18 @@
 
+
+/*
+ * ===== Flux operating system ====
+ * (2026-2027)
+ * GNU GPL (v3.0)
+ * ================================ 
+ * creat by : Souag Ahmed El fatih
+ * https://github.com/SouagAhmedElfatih/flux_os
+ * 
+ * File : C source
+ * early graphics File
+ *
+ * 
+*/
 #include <flux/stdint.h>
 #include <drivers/gfx/font.h>
 #include <flux/bit.h>
