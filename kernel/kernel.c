@@ -17,6 +17,7 @@
 #include <drivers/gfx/early.h>
 #include <multiboot.h>
 #include <arch/x86/gdt.h>
+#include <flux/string.h>
 
 kernel_info_t kernel_info;
 
@@ -75,8 +76,9 @@ void kernel_main(uint32_t ebx) {
         early_gfx_print("[ ok ] global descriptor table init \n");
     }
     else {
-        //
+        // in text mode we can use print
     }
+
 
     
 }

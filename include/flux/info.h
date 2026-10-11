@@ -8,7 +8,7 @@
  * https://github.com/SouagAhmedElfatih/flux_os
  * 
  * File : C header
- * kenrel info File
+ * info info File
  *
  * 
 */

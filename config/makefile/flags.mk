@@ -16,3 +16,4 @@ LD_FLAGS = -m elf_i386 -T ./kernel/linker.ld
 CC = i686-elf-gcc
 ASM = nasm 
 LD = i686-elf-ld
+QEMU = qemu-system-i386
