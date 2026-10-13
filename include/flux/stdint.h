@@ -36,6 +36,7 @@ typedef signed long int64_t;
 typedef unsigned int uintptr_t;
 typedef unsigned char bool;
 
+typedef unsigned int size_t;
 #define true 0
 #define false 1
 

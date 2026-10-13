@@ -5,7 +5,7 @@ ARCH = x86
 include ./config/makefile/flags.mk
 include ./config/makefile/paths.mk
 
-all: drivers_compile kernel_compile kernel_linker 
+all: drivers_compile stdlib_compile kernel_compile kernel_linker 
 
 kernel_compile: 
 	$(ASM) $(ASM_FLAGS) $(BOOT_DIR)boot.asm -o $(TMP_DIR)obj/boot.o
@@ -15,6 +15,10 @@ kernel_compile:
 	$(ASM) $(ASM_FLAGS) $(ARCH_DIR)gdt.asm -o $(TMP_DIR)obj/gdt.o
 	$(CC) $(CC_FLAGS) $(KENREL_DIR)kernel.c -o $(TMP_DIR)obj/kernel.o
 
+stdlib_compile:
+	#$(CC) $(CC_FLAGS) $(STDLIB_DIR) -o $(TMP_DIR)obj/.o
+	$(CC) $(CC_FLAGS) $(STDLIB_DIR)strcpy.c -o $(TMP_DIR)obj/strcpy.o 
+	$(CC) $(CC_FLAGS) $(STDLIB_DIR)strcmp.c -o $(TMP_DIR)obj/strcmp.o 
 
 kernel_linker:
 	$(LD) $(LD_FLAGS) $(TMP_DIR)obj/*.o -o $(KENREL_ELF)
@@ -25,6 +29,9 @@ drivers_compile:
 cdrom:
 	grub-mkrescue rootFS -o flux.iso
 
+
+qemu:
+	$(QEMU) -cdrom flux.iso
 
 setup:
 	rm -rf $(TMP_DIR)
