@@ -15,6 +15,8 @@
 #ifndef OI_PORT_H
 #define IO_PORT_H
 
+#include <flux/stdint.h>
+
 extern void outByte(uint16_t port, uint8_t value);
 extern void outWord(uint16_t port, uint16_t value);
 

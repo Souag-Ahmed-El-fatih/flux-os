@@ -18,10 +18,22 @@
 #include <multiboot.h>
 #include <arch/x86/gdt.h>
 #include <flux/string.h>
+#include <arch/x86/pic.h>
+#include <arch/x86/serail.h>
+
 
 kernel_info_t kernel_info;
 
+#define VERSION "1.0"
+#define OS_NAME "Flux_OS \n"
+
 void kernel_main(uint32_t ebx) {
+
+
+    serial_init();
+
+    serial_print("welcome to serail mode \n\r");
+    serial_print(OS_NAME);
 
     multiboot_info_t *mbi = (multiboot_info_t*)ebx;
 
@@ -68,12 +80,18 @@ void kernel_main(uint32_t ebx) {
         early_gfx_color(0xFF2ECC71);
         early_gfx_print("flux os \n");
         early_gfx_color(0xFFC0C0C0);
+        serial_print("Graphics mode [ OK ] \n\r");
     }
 
     GDT_LOAD();
+    pic_disable();
+
+    serial_print("[ OK ] global descriptor table init \n\r");
+    serial_print("[ ok ] pic disable (masked) \n\r");
 
     if (kernel_info.gfx.mode == GFX_GFX_MODE) {
         early_gfx_print("[ ok ] global descriptor table init \n");
+        early_gfx_print("[ ok ] pic disable (masked) \n ");
     }
     else {
         // in text mode we can use print
